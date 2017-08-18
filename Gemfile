@@ -25,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'sorcery'
 gem 'awesome_rails_console'
+gem 'ancestry'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
