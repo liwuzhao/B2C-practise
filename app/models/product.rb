@@ -18,6 +18,11 @@ class Product < ApplicationRecord
 
   before_create :set_default_atrrs
 
+  module Status
+    On = 'on'
+    Off = 'off'
+  end
+
   private
 
   def set_default_atrrs
