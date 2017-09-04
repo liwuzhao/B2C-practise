@@ -14,6 +14,19 @@ class Admin::ProductImagesController < Admin::BaseController
     redirect_to :back
   end
 
+  def update
+    @product_image = @product.product_images.find(parmas[:id])
+    @product_image.weight = params[:weight]
+
+    if @product_image.save
+      flash[:notice] = "修改成功"
+    else
+      flash[:notice] = "修改失败"
+    end
+
+    redirect_to :back
+  end
+
   def destroy
     @product_image = @product.product_images.find(parmas[:id])
 
