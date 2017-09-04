@@ -27,6 +27,7 @@ gem 'sorcery'
 gem 'awesome_rails_console'
 gem 'ancestry'
 gem 'will_paginate'
+gem 'paperclip', '~> 5.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
