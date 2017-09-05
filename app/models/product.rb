@@ -16,6 +16,7 @@ class Product < ApplicationRecord
 
   belongs_to :category
   has_many :product_images, -> { order(weight: 'desc') }, dependent: :destroy
+  has_one :main_product_image, -> { order(weight: 'desc') }, class_name: :ProductImage
 
   before_create :set_default_atrrs
 
@@ -23,6 +24,8 @@ class Product < ApplicationRecord
     On = 'on'
     Off = 'off'
   end
+
+  scope :onshelf, -> { where(status: Status::On) }
 
   private
 
