@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user)
                       .permit(:email, :password, :password_confirmation))
 
+    @user.uuid = session[:user_uuid]
+
     if @user.save
       flash[:notice] = "注册成功"
       redirect_to root_path
