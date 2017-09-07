@@ -18,6 +18,9 @@ class User < ApplicationRecord
     self.email.split('@').first
   end
 
+  has_many :addresses, -> { where(addresses_type: Address::AddressType::User) }
+  belongs_to :default_address, class_name: :Address
+
   private
     def need_validates_password
       self.new_record? ||
