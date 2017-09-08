@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_browser_uuid
 
   protected
-
   def auth_user
     unless logged_in?
       flash[:notice] = "请登录"
@@ -27,11 +26,11 @@ class ApplicationController < ActionController::Base
         uuid = RandomCode.generate_utoken
       end
     end
+
     update_browser_uuid uuid
   end
 
   def update_browser_uuid uuid
     session[:user_uuid] = cookies.permanent['user_uuid'] = uuid
   end
-
 end
