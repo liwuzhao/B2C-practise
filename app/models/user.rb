@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :addresses, -> { where(addresses_type: Address::AddressType::User) }
   belongs_to :default_address, class_name: :Address
 
+  has_many :orders
+
   private
     def need_validates_password
       self.new_record? ||
