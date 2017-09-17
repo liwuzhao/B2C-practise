@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911113431) do
+ActiveRecord::Schema.define(version: 20170917125709) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20170911113431) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                           null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at",                      null: false
@@ -106,11 +106,22 @@ ActiveRecord::Schema.define(version: 20170911113431) do
     t.datetime "reset_password_email_sent_at"
     t.string   "uuid"
     t.integer  "default_address_id"
+    t.string   "cellphone"
     t.index ["activation_token"], name: "index_users_on_activation_token"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["cellphone"], name: "index_users_on_cellphone"
+    t.index ["email"], name: "index_users_on_email"
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
+  end
+
+  create_table "verify_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.string   "cellphone"
+    t.datetime "expired_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cellphone", "token"], name: "index_verify_tokens_on_cellphone_and_token"
   end
 
 end

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   resources :orders
   resources :payments, only: [:index]
+  resources :cellphone_tokens, only: [:create]
 
   namespace :dashboard do
     scope 'profile' do
